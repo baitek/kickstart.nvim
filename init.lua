@@ -142,6 +142,15 @@ require('lazy').setup({
       vim.keymap.set('n', '<C-n>', ':Neotree toggle current reveal_force_cwd left<CR>')
     end,
   },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    config = true,
+  },
   { -- adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
