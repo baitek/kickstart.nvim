@@ -8,6 +8,8 @@ return {
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
         bash = { 'shellcheck' },
+        groovy = { 'npm-groovy-lint' },
+        Jenkinsfile = { 'npm-groovy-lint' },
       }
 
       -- create autocommand which carries out the actual linting on events
