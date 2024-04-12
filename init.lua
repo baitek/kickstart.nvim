@@ -122,6 +122,26 @@ require('lazy').setup({
   'tpope/vim-sleuth', -- detect tabstop and shiftwidth automatically
   'christoomey/vim-tmux-navigator', -- seemless navigation between tmux panes and nvim windows
   { 'numToStr/Comment.nvim', opts = {} }, -- "gc" to comment visual regions/lines
+  { -- file tree panel
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('neo-tree').setup {
+        close_if_last_window = true,
+        filesystem = {
+          filtered_items = {
+            visible = true,
+          },
+        },
+      }
+      vim.keymap.set('n', '<C-n>', ':Neotree toggle current reveal_force_cwd left<CR>')
+    end,
+  },
   { -- adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -330,6 +350,7 @@ require('lazy').setup({
         bashls = {},
         yamlls = {},
         tsserver = {},
+        groovyls = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -351,6 +372,7 @@ require('lazy').setup({
         'pyright',
         'yamlls',
         'tsserver',
+        'groovyls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -491,7 +513,7 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'groovy' },
       auto_install = true,
       highlight = {
         enable = true,
